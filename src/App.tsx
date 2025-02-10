@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import WinnerNotif from "./components/WinnerNotif";
 import GameButtons from "./components/GameButtons";
-import Square from "./components/square";
+import Square from "./components/Square";
 
 function App() {
   const startArray: string[] = ["", "", "", "", "", "", "", "", ""];
