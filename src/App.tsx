@@ -25,7 +25,7 @@ function App() {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    //ایجاد حلقه در برای بررسی حالات برد و مقایسه با انتخاب شده ها
+    //do loop for checking winner
     for (const [a, b, c] of winCombination) {
       if (spots[a] !== "" && spots[b] === spots[a] && spots[a] === spots[c]) {
         setWinSpots([a, b, c]);
@@ -35,7 +35,7 @@ function App() {
         return;
       }
     }
-    // برای مساوری کردن بازی
+    // if draw
     if (!spots.includes("")) {
       setIsFinished(true);
       setShowWinner(true);
@@ -50,7 +50,7 @@ function App() {
   useEffect(() => {
     if (!isX && autoMode && !isFinished) {
       setTimeout(() => {
-        // به وجود آردن ایندکس آرایه ای از خالی ها
+        // make empty indexes and choose random from them
         const emptyIndices: number[] = spots
           .map((val, index) => (val === "" ? index : -1))
           .filter((val) => val !== -1);
@@ -63,7 +63,7 @@ function App() {
     }
   }, [isX, autoMode, spots, isFinished]);
 
-  // از نقاط باقی مانده، نقطه مورد نظر رو برای کاربر در نظر میگیره
+  // make user choose from empty 
   const playClickHandler = (index: number): void => {
     if (!isFinished && spots[index] === "") {
       const newArray = [...spots];
@@ -72,7 +72,7 @@ function App() {
       setIsX(!isX);
     }
   };
-  // بازی به طور کامل از اول شروع میشه
+  // restart game
   const resetButton = (): void => {
     setSpots(startArray);
     setWinner("");
